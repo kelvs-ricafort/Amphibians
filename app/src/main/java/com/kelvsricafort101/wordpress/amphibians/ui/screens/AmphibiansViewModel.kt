@@ -11,6 +11,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.kelvsricafort101.wordpress.amphibians.AmphibiansApplication
 import com.kelvsricafort101.wordpress.amphibians.data.AmphibiansRepository
+import com.kelvsricafort101.wordpress.amphibians.model.Amphibian
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -19,7 +20,7 @@ import java.io.IOException
  * UI state for the Home screen
  */
 sealed interface AmphibiansUiState {
-    data class Success(val amphibians: String): AmphibiansUiState
+    data class Success(val amphibians: List<Amphibian>): AmphibiansUiState
     object Error: AmphibiansUiState
     object Loading: AmphibiansUiState
 }
@@ -48,10 +49,7 @@ class AmphibiansViewModel(
         viewModelScope.launch {
             amphibiansUiState = AmphibiansUiState.Loading
             amphibiansUiState = try {
-                val listResult = amphibiansRepository.getAmphibians()
-                AmphibiansUiState.Success(
-                    "Success: ${listResult.size} Amphibians retrieved"
-                )
+                AmphibiansUiState.Success(amphibiansRepository.getAmphibians())
             } catch (_: IOException) {
                 AmphibiansUiState.Error
             } catch (_: HttpException) {

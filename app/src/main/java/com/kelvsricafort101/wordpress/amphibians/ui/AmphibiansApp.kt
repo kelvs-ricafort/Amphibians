@@ -34,6 +34,7 @@ fun AmphibiansApp(
             )
             HomeScreen(
                 amphibiansUiState = amphibiansViewModel.amphibiansUiState,
+                retryAction = amphibiansViewModel::getAmphibians,
                 contentPadding = it
             )
         }

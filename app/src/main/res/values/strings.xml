@@ -4,5 +4,4 @@
     <string name="retry">Retry</string>
     <string name="loading">Loading</string>
     <string name="amphibian_title">%s (%s)</string>
-    <string name="placeholder_result">Placeholder Result Text</string>
 </resources>
