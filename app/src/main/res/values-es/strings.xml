@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Anfibios</string>
+    <string name="loading_failed">No se pudo cargar</string>
+    <string name="retry">Rever</string>
+    <string name="loading">Cargando</string>
+    <string name="amphibian_title">%s (%s)</string>
+    <string name="about">Acerca de</string>
+    <string name="app_info">Información de la aplicación</string>
+    <string name="about_description">Explora y aprende sobre diferentes especies de anfibios.</string>
+    <string name="version">Versión: %1$s</string>
+    <string name="build">Construir: %1$d</string>
+    <string name="app_features">Funcionalidades de la aplicación</string>
+    <string name="feature_amphibians">Aprende sobre los anfibios</string>
+    <string name="feature_dark_mode">Compatibilidad con el modo oscuro</string>
+    <string name="feature_languages">Compatibilidad con varios idiomas</string>
+    <string name="developer_info">Información del desarrollador</string>
+    <string name="developer">Revelador: %1$s</string>
+    <string name="developer_name">Kelvin Ricafort</string>
+    <string name="settings">configuración</string>
+    <string name="appearance">Apariencia</string>
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="dark_mode_description">Utiliza un tema de color oscuro en toda la aplicación.</string>
+    <string name="language">Idioma</string>
+    <string name="language_english">Inglés</string>
+    <string name="language_filipino">Filipino</string>
+    <string name="language_spanish">Español</string>
+</resources>

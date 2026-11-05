@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mga Amphibians</string>
+    <string name="loading_failed">Bigong mag-load</string>
+    <string name="retry">Subukang muli</string>
+    <string name="loading">Naglo-load</string>
+    <string name="amphibian_title">%s (%s)</string>
+    <string name="about">Tungkol</string>
+    <string name="app_info">Impormasyon ng App</string>
+    <string name="about_description">Mag-explore at matuto tungkol sa iba\'t ibang uri ng mga amphibian.</string>
+    <string name="version">Bersyon: %1$s</string>
+    <string name="build">Bumuo: %1$d</string>
+    <string name="app_features">Mga Tampok ng App</string>
+    <string name="feature_amphibians">Alamin ang tungkol sa mga amphibian</string>
+    <string name="feature_dark_mode">Suporta para sa Dark Mode</string>
+    <string name="feature_languages">Suporta para sa Maraming Wika</string>
+    <string name="developer_info">Impormasyon ng Developer</string>
+    <string name="developer">Developer: %1$s</string>
+    <string name="developer_name">Kelvin Ricafort</string>
+    <string name="settings">Mga Setting</string>
+    <string name="appearance">Hitsura</string>
+    <string name="dark_mode">Madilim na Mode</string>
+    <string name="dark_mode_description">Gumamit ng madilim na tema ng kulay sa buong app.</string>
+    <string name="language">Wika</string>
+    <string name="language_english">Ingles</string>
+    <string name="language_filipino">Filipino</string>
+    <string name="language_spanish">Español</string>
+</resources>
