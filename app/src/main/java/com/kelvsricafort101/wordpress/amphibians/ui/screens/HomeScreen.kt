@@ -14,11 +14,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -32,30 +35,53 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.kelvsricafort101.wordpress.amphibians.R
 import com.kelvsricafort101.wordpress.amphibians.model.Amphibian
+import com.kelvsricafort101.wordpress.amphibians.navigation.NavigationDestination
+import com.kelvsricafort101.wordpress.amphibians.ui.AmphibiansTopAppBar
 import com.kelvsricafort101.wordpress.amphibians.ui.theme.AmphibiansTheme
 
+object HomeDestination: NavigationDestination {
+    override val route = "home"
+    override val titleRes = R.string.app_name
+}
 @Composable
 fun HomeScreen(
     amphibiansUiState: AmphibiansUiState,
     retryAction: () -> Unit,
+    openDrawer: () -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
-    when(amphibiansUiState) {
-        is AmphibiansUiState.Loading -> LoadingScreen(modifier = modifier.size(200.dp))
-        is AmphibiansUiState.Success -> AmphibiansListScreen(
-            amphibians = amphibiansUiState.amphibians,
-            modifier = modifier
-                .padding(
-                    start = dimensionResource(R.dimen.padding_medium),
-                    top = dimensionResource(R.dimen.padding_medium),
-                    end = dimensionResource(R.dimen.padding_medium)
-                ),
-            contentPadding = contentPadding
-        )
-        is AmphibiansUiState.Error -> ErrorScreen(
-            retryAction = retryAction,
-            modifier = modifier.fillMaxSize())
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    Scaffold(
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            AmphibiansTopAppBar(
+                openDrawer = openDrawer,
+                scrollBehavior = scrollBehavior
+            )
+        }
+    ) { innerPadding ->
+        when(amphibiansUiState) {
+            is AmphibiansUiState.Loading -> LoadingScreen(
+                modifier = modifier.size(200.dp)
+            )
+            is AmphibiansUiState.Success -> AmphibiansListScreen(
+                amphibians = amphibiansUiState.amphibians,
+                modifier = modifier
+                    .padding(
+                        start = dimensionResource(R.dimen.padding_medium),
+                        top = dimensionResource(R.dimen.padding_medium),
+                        end = dimensionResource(R.dimen.padding_medium)
+                    ),
+                contentPadding = contentPadding
+            )
+            is AmphibiansUiState.Error -> ErrorScreen(
+                retryAction = retryAction,
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+            )
+        }
     }
 }
 

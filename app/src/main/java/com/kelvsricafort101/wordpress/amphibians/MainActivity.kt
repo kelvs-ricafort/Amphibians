@@ -9,7 +9,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kelvsricafort101.wordpress.amphibians.ui.AmphibiansApp
+import com.kelvsricafort101.wordpress.amphibians.ui.screens.AmphibiansViewModel
 import com.kelvsricafort101.wordpress.amphibians.ui.theme.AmphibiansTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,11 +19,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val amphibiansViewModel: AmphibiansViewModel = viewModel(
+                factory = AmphibiansViewModel.Factory
+            )
             AmphibiansTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    AmphibiansApp()
+                    AmphibiansApp(
+                        amphibiansUiState = amphibiansViewModel.amphibiansUiState,
+                        retryAction = amphibiansViewModel::getAmphibians,
+                    )
                 }
             }
         }
@@ -32,8 +40,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AmphibiansAppPreview() {
     AmphibiansTheme(darkTheme = false) {
+        val amphibiansViewModel: AmphibiansViewModel = viewModel(
+            factory = AmphibiansViewModel.Factory
+        )
         Surface {
-            AmphibiansApp()
+            AmphibiansApp(
+                amphibiansUiState = amphibiansViewModel.amphibiansUiState,
+                retryAction = amphibiansViewModel::getAmphibians
+            )
         }
     }
 }
@@ -42,8 +56,14 @@ fun AmphibiansAppPreview() {
 @Composable
 fun AmphibiansAppDarkPreview() {
     AmphibiansTheme(darkTheme = true) {
+        val amphibiansViewModel: AmphibiansViewModel = viewModel(
+            factory = AmphibiansViewModel.Factory
+        )
         Surface {
-            AmphibiansApp()
+            AmphibiansApp(
+                amphibiansUiState = amphibiansViewModel.amphibiansUiState,
+                retryAction = amphibiansViewModel::getAmphibians
+            )
         }
     }
 }

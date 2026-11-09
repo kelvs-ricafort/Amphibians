@@ -5,6 +5,7 @@
     <string name="retry">Subukang muli</string>
     <string name="loading">Naglo-load</string>
     <string name="amphibian_title">%s (%s)</string>
+    <string name="home">Bahay</string>
     <string name="about">Tungkol</string>
     <string name="app_info">Impormasyon ng App</string>
     <string name="about_description">Mag-explore at matuto tungkol sa iba\'t ibang uri ng mga amphibian.</string>
@@ -25,4 +26,5 @@
     <string name="language_english">Ingles</string>
     <string name="language_filipino">Filipino</string>
     <string name="language_spanish">Español</string>
+    <string name="open_navigation_drawer">Buksan ang Navigation Drawer</string>
 </resources>

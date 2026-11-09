@@ -24,8 +24,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.kelvsricafort101.wordpress.amphibians.R
 import com.kelvsricafort101.wordpress.amphibians.data.AppLanguage
+import com.kelvsricafort101.wordpress.amphibians.navigation.NavigationDestination
 import com.kelvsricafort101.wordpress.amphibians.ui.AmphibiansTopAppBar
 import com.kelvsricafort101.wordpress.amphibians.ui.theme.AmphibiansTheme
+
+object SettingsDestination: NavigationDestination {
+    override val route = "settings"
+    override val titleRes = R.string.settings
+}
 
 @Composable
 fun SettingsScreen(
@@ -33,6 +39,7 @@ fun SettingsScreen(
     onDarkModeChanged: (Boolean) -> Unit,
     selectedLanguage: AppLanguage,
     onLanguageSelected: (AppLanguage) -> Unit,
+    openDrawer: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -40,6 +47,7 @@ fun SettingsScreen(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             AmphibiansTopAppBar(
+                openDrawer = openDrawer,
                 scrollBehavior = scrollBehavior
             )
         }
@@ -102,7 +110,8 @@ fun SettingsScreenPreview() {
                 darkMode = false,
                 onDarkModeChanged = {},
                 selectedLanguage = AppLanguage.ENGLISH,
-                onLanguageSelected = {}
+                onLanguageSelected = {},
+                openDrawer = {}
             )
         }
     }
@@ -117,7 +126,8 @@ fun SettingsScreenDarkPreview() {
                 darkMode = true,
                 onDarkModeChanged = {},
                 selectedLanguage = AppLanguage.ENGLISH,
-                onLanguageSelected = {}
+                onLanguageSelected = {},
+                openDrawer = {}
             )
         }
     }

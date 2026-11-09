@@ -41,18 +41,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kelvsricafort101.wordpress.amphibians.BuildConfig
 import com.kelvsricafort101.wordpress.amphibians.R
+import com.kelvsricafort101.wordpress.amphibians.navigation.NavigationDestination
 import com.kelvsricafort101.wordpress.amphibians.ui.AmphibiansTopAppBar
 import com.kelvsricafort101.wordpress.amphibians.ui.theme.AmphibiansTheme
 
+object AboutAppDestination: NavigationDestination {
+    override val route = "about"
+    override val titleRes = R.string.about
+}
 @Composable
 fun AboutAppScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    openDrawer: () -> Unit
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             AmphibiansTopAppBar(
+                openDrawer = openDrawer,
                 scrollBehavior = scrollBehavior
             )
         }
@@ -246,7 +253,9 @@ private fun FeatureItem(
 fun AboutAppScreenPreview() {
     AmphibiansTheme(darkTheme = false) {
         Surface {
-            AboutAppScreen()
+            AboutAppScreen(
+                openDrawer = {}
+            )
         }
     }
 }
@@ -256,8 +265,9 @@ fun AboutAppScreenPreview() {
 fun AboutAppScreenDarkPreview() {
     AmphibiansTheme(darkTheme = true) {
         Surface {
-            AboutAppScreen()
+            AboutAppScreen(
+                openDrawer = {}
+            )
         }
     }
 }
-

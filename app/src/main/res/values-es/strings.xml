@@ -5,6 +5,7 @@
     <string name="retry">Rever</string>
     <string name="loading">Cargando</string>
     <string name="amphibian_title">%s (%s)</string>
+    <string name="home">Inicio</string>
     <string name="about">Acerca de</string>
     <string name="app_info">Información de la aplicación</string>
     <string name="about_description">Explora y aprende sobre diferentes especies de anfibios.</string>
@@ -25,4 +26,5 @@
     <string name="language_english">Inglés</string>
     <string name="language_filipino">Filipino</string>
     <string name="language_spanish">Español</string>
+    <string name="open_navigation_drawer">Abrir panel de navegación</string>
 </resources>
